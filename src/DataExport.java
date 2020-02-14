@@ -47,7 +47,6 @@ public class DataExport {
                 account.appendChild(accClosing);
             }
 
-            // creating output
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
 
             // add indents for "pretty" look
