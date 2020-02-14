@@ -44,11 +44,13 @@ public class DataExport {
 
                 Element accClosing = doc.createElement("closingDate");
                 accClosing.appendChild(doc.createTextNode(a.closingDateToString()));
-                account.appendChild(accName);
+                account.appendChild(accClosing);
             }
 
-            // create a "pretty" output
+            // creating output
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
+
+            // add indents for "pretty" look
             transformerFactory.setAttribute("indent-number", 2);
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
