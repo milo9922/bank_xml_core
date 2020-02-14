@@ -1,9 +1,14 @@
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
 
         AccountsHandler accountsHandler = new AccountsHandler();
-        accountsHandler.parseXML();
+        List<Account> list = accountsHandler.getDatafromXML();
+        for (Account a : list) {
+            System.out.println(a.toString());
+        }
     }
 
     // TODO: wczytanie danych
