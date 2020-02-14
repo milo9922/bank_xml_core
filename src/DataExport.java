@@ -51,7 +51,7 @@ public class DataExport {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
 
             // add indents for "pretty" look
-            transformerFactory.setAttribute("indent-number", 2);
+            transformerFactory.setAttribute("indent-number", 8);
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
