@@ -1,4 +1,6 @@
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Account {
 
@@ -6,9 +8,9 @@ public class Account {
     private String name;
     private String currency;
     private BigDecimal balance;
-    private String closingDate;
+    private Date closingDate;
 
-    public Account(String iban, String name, String currency, BigDecimal balance, String closingDate) {
+    public Account(String iban, String name, String currency, BigDecimal balance, Date closingDate) {
         this.iban = iban;
         this.name = name;
         this.currency = currency;
@@ -24,32 +26,21 @@ public class Account {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getCurrency() {
         return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
     }
 
     public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    public String getClosingDate() {
+    public Date getClosingDate() {
         return closingDate;
     }
 
-    public void setClosingDate(String closingDate) {
-        this.closingDate = closingDate;
+    public String closingDateToString() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(closingDate);
     }
 
     @Override
@@ -58,6 +49,6 @@ public class Account {
                 + "\nName : " + name
                 + "\nCurrency : " + currency
                 + "\nBalance : " + balance
-                + "\nClosing date : " + closingDate;
+                + "\nClosing date : " + closingDateToString();
     }
 }

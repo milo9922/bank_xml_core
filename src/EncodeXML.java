@@ -7,10 +7,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class AccountsHandler {
+public class EncodeXML {
 
     public List<Account> getDatafromXML() {
         List<Account> accounts = new ArrayList<>();
@@ -25,7 +27,8 @@ public class AccountsHandler {
 
             for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
-                String iban, name, currency, closingDate;
+                String iban, name, currency;
+                Date closingDate;
                 BigDecimal balance;
 
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -48,10 +51,10 @@ public class AccountsHandler {
                             .item(0)
                             .getTextContent());
 
-                    closingDate = eElement
+                    closingDate = new SimpleDateFormat("yyyy-MM-dd").parse(eElement
                             .getElementsByTagName("closingDate")
                             .item(0)
-                            .getTextContent();
+                            .getTextContent());
 
                     Account currentAccount = new Account(iban, name, currency, balance, closingDate);
                     accounts.add(currentAccount);
@@ -60,6 +63,7 @@ public class AccountsHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return accounts;
     }
 
