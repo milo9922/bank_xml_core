@@ -2,11 +2,15 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,18 +18,17 @@ import java.util.List;
 
 public class EncodeXML {
 
-    public List<Account> getDatafromXML() {
+    public List<Account> getDatafromXML(String path) throws ParserConfigurationException, IOException, SAXException, ParseException {
         List<Account> accounts = new ArrayList<>();
 
-        try {
-            File inputFile = new File("src/xml/input.xml");
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(inputFile);
-            doc.getDocumentElement().normalize();
-            NodeList nList = doc.getElementsByTagName("account");
+        File inputFile = new File(path);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(inputFile);
+        doc.getDocumentElement().normalize();
+        NodeList nList = doc.getElementsByTagName("account");
 
-            for (int temp = 0; temp < nList.getLength(); temp++) {
+        for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
                 String iban, name, currency;
                 Date closingDate;
@@ -60,9 +63,6 @@ public class EncodeXML {
                     accounts.add(currentAccount);
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         return accounts;
     }

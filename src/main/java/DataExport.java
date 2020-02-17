@@ -50,14 +50,14 @@ public class DataExport {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
 
             // add indents for "pretty" look
-            transformerFactory.setAttribute("indent-number", 8);
+            transformerFactory.setAttribute("indent-number", 4);
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("src/xml/output.xml"));
+            StreamResult result = new StreamResult(new File("src/main/xml/output.xml"));
             transformer.transform(new DOMSource(doc), result);
 
             transformer.transform(source, result);
