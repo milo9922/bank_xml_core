@@ -61,17 +61,12 @@ public class DataExport {
             transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File(outputPath));
-            //transformer.transform(new DOMSource(doc), result);
             transformer.transform(source, result);
 
             System.out.println("\nFile saved!");
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public String getOutputPath() {
-        return outputPath;
     }
 
     public void setOutputPath(String outputPath) {
