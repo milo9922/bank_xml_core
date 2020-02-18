@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
+
 public class DataExportTest {
 
     @Test(expected = java.io.FileNotFoundException.class)
@@ -18,6 +19,7 @@ public class DataExportTest {
         String path = "src/main/xml/wrongInput.xml";
 
         // when
+        decodeXML.setInputPath(path);
         decodeXML.getDatafromXML();
     }
 
@@ -29,9 +31,11 @@ public class DataExportTest {
         // given
         final File tempXml = temporaryFolder.newFile("emptyFile.xml");
         DecodeXML decodeXML = new DecodeXML();
+        decodeXML.setInputPath(tempXml.getPath());
 
         // when
         decodeXML.getDatafromXML();
     }
+
 
 }

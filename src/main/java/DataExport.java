@@ -61,7 +61,7 @@ public class DataExport {
             transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File(outputPath));
-            transformer.transform(new DOMSource(doc), result);
+            //transformer.transform(new DOMSource(doc), result);
             transformer.transform(source, result);
 
             System.out.println("\nFile saved!");
