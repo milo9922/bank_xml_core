@@ -18,7 +18,7 @@ public class DataExportTest {
         String path = "src/main/xml/wrongInput.xml";
 
         // when
-        encodeXML.getDatafromXML(path);
+        encodeXML.getDatafromXML();
     }
 
     @Rule
@@ -31,7 +31,7 @@ public class DataExportTest {
         EncodeXML encodeXML = new EncodeXML();
 
         // when
-        encodeXML.getDatafromXML(tempXml.getPath());
+        encodeXML.getDatafromXML();
     }
 
 }

@@ -18,16 +18,20 @@ import java.util.List;
 
 public class EncodeXML {
 
-    public List<Account> getDatafromXML(String path) throws ParserConfigurationException, IOException, SAXException, ParseException {
-        List<Account> accounts = new ArrayList<>();
+    private String inputPath = "src/main/xml/input.xml";
 
-        File inputFile = new File(path);
+    public List<Account> getDatafromXML() throws ParserConfigurationException, IOException, SAXException, ParseException {
+        List<Account> accounts = new ArrayList<>();
+        File inputFile = new File(inputPath);
+
+        // read xml file
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(inputFile);
         doc.getDocumentElement().normalize();
         NodeList nList = doc.getElementsByTagName("account");
 
+        // get data from xml file and save as list of accounts
         for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
                 String iban, name, currency;
@@ -62,9 +66,16 @@ public class EncodeXML {
                     Account currentAccount = new Account(iban, name, currency, balance, closingDate);
                     accounts.add(currentAccount);
                 }
-            }
+        }
 
         return accounts;
     }
 
+    public String getInputPath() {
+        return inputPath;
+    }
+
+    public void setInputPath(String inputPath) {
+        this.inputPath = inputPath;
+    }
 }

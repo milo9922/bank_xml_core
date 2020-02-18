@@ -48,7 +48,7 @@ public class FilterTest {
         filter.byCurrency(accounts);
 
         // then
-        assertEquals(accounts, expectedAccounts);
+        assertEquals(expectedAccounts, accounts);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class FilterTest {
         filter.byBalance(accounts);
 
         // then
-        assertEquals(accounts, expectedAccounts);
+        assertEquals(expectedAccounts, accounts);
     }
 
     @Test
@@ -98,7 +98,7 @@ public class FilterTest {
         filter.byDate(accounts);
 
         //then
-        assertEquals(accounts, expectedAccounts);
+        assertEquals(expectedAccounts, accounts);
     }
 
     @Test
@@ -124,7 +124,7 @@ public class FilterTest {
         filter.byIban(accounts);
 
         // then
-        assertEquals(accounts, expectedAccounts);
+        assertEquals(expectedAccounts, accounts);
     }
 
     @Test
@@ -148,7 +148,7 @@ public class FilterTest {
         filter.byAll(accounts);
 
         // then
-        assertEquals(accounts, expectedAccounts);
+        assertEquals(expectedAccounts, accounts);
     }
 
 

@@ -13,9 +13,12 @@ import java.util.List;
 
 public class DataExport {
 
+    private String outputPath = "src/main/xml/output.xml";
+
     public void export(List<Account> accounts) {
 
         try {
+            // create xml file
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.newDocument();
@@ -57,9 +60,8 @@ public class DataExport {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("src/main/xml/output.xml"));
+            StreamResult result = new StreamResult(new File(outputPath));
             transformer.transform(new DOMSource(doc), result);
-
             transformer.transform(source, result);
 
             System.out.println("\nFile saved!");
@@ -68,5 +70,11 @@ public class DataExport {
         }
     }
 
+    public String getOutputPath() {
+        return outputPath;
+    }
 
+    public void setOutputPath(String outputPath) {
+        this.outputPath = outputPath;
+    }
 }

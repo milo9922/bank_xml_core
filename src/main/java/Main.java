@@ -13,14 +13,10 @@ public class Main {
         Sort sort = new Sort();
         DataExport export = new DataExport();
 
-        String inputPath = "src/main/xml/input.xml";
-        List<Account> list = encodeXML.getDatafromXML(inputPath);
+        List<Account> list = encodeXML.getDatafromXML();
         filter.byAll(list);
         sort.sortByName(list);
         export.export(list);
-
     }
 
-
-    // TODO testy jednostkowe!!!
 }
