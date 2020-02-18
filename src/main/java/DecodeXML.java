@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class EncodeXML {
+public class DecodeXML {
 
     private String inputPath = "src/main/xml/input.xml";
 

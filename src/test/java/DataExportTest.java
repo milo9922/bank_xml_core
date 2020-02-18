@@ -14,11 +14,11 @@ public class DataExportTest {
     @Test(expected = java.io.FileNotFoundException.class)
     public void fileNotFoundTest() throws ParserConfigurationException, SAXException, ParseException, IOException {
         // given
-        EncodeXML encodeXML = new EncodeXML();
+        DecodeXML decodeXML = new DecodeXML();
         String path = "src/main/xml/wrongInput.xml";
 
         // when
-        encodeXML.getDatafromXML();
+        decodeXML.getDatafromXML();
     }
 
     @Rule
@@ -28,10 +28,10 @@ public class DataExportTest {
     public void emptyFileTest() throws ParserConfigurationException, SAXException, ParseException, IOException {
         // given
         final File tempXml = temporaryFolder.newFile("emptyFile.xml");
-        EncodeXML encodeXML = new EncodeXML();
+        DecodeXML decodeXML = new DecodeXML();
 
         // when
-        encodeXML.getDatafromXML();
+        decodeXML.getDatafromXML();
     }
 
 }

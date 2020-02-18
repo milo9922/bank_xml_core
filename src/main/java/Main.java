@@ -8,12 +8,12 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws ParserConfigurationException, SAXException, ParseException, IOException {
-        EncodeXML encodeXML = new EncodeXML();
+        DecodeXML decodeXML = new DecodeXML();
         Filter filter = new Filter();
         Sort sort = new Sort();
         DataExport export = new DataExport();
 
-        List<Account> list = encodeXML.getDatafromXML();
+        List<Account> list = decodeXML.getDatafromXML();
         filter.byAll(list);
         sort.sortByName(list);
         export.export(list);
