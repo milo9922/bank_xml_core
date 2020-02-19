@@ -27,6 +27,16 @@ public class DataExport {
             Element rootElement = doc.createElement("accounts");
             doc.appendChild(rootElement);
 
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+
+            // add indents for "pretty" look
+            transformerFactory.setAttribute("indent-number", 4);
+            Transformer transformer = transformerFactory.newTransformer();
+
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
+
             for (Account a : accounts) {
                 String ibanTag = "account";
                 Element account = doc.createElement(ibanTag);
@@ -50,15 +60,6 @@ public class DataExport {
                 account.appendChild(accClosing);
             }
 
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-
-            // add indents for "pretty" look
-            transformerFactory.setAttribute("indent-number", 4);
-            Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File(outputPath));
             transformer.transform(source, result);
